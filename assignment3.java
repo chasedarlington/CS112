@@ -11,16 +11,21 @@ public class assignment3 {
 	f5 = 8
 	F(i+2)=F(i)+F(i+1)
 	*/ 
+	int period = 5;
 	int f = 0; //predefine f as integer 0
-	if (t == 1 || t == 0){ //quickly define f0 and f1 if only 0 or 1 periods (days) is entered
+	if (t/period == 0){ //quickly define f0 if less than 5 days (1 period) is entered
 		f = init; //assign initial amount to the value of f for both f0 and f1
-		System.out.print("\t" + init + " " + init + " "); //print f0 and f1
+		System.out.print("\t" + init); //print f0
 		}
+	else if (t/period == 1) { //quickly define f1 and f0 if less than 10 days (2 periods) is entered
+		f = init;
+		System.out.print("\t" + init + " " + init + " "); //print f0 and f1
+	}
 	else {
 		int f_less_2 = init; //define f(i-2)
 		int f_less_1 = init; //define f(i-1)
 		System.out.print("\t" + init + " " + init + " "); //print f0 and f1
-		for (int i = 2; i<=t ; i++) { //for loop starting with f2 (f0 and f1 already defined); loop continues increasing i +1 until i matches the number of periods entered
+		for (int i = 2; i<=(t/period) ; i++) { //for loop starting with f2 (f0 and f1 already defined); loop continues increasing i +1 until i matches the number of periods entered
 			f = f_less_1 + f_less_2; // f(i+2)=f(i+1)+f(i), which equates to f(i) = f(i-2) + f(i-1)
 			f_less_2 = f_less_1; //increment f(i-2) to the former f(i-1) value; reassigns values for next loop
 			f_less_1 = f; //increment f(i-1) to the former f value; reassigns values for next loop
