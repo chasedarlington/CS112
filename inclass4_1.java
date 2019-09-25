@@ -52,9 +52,6 @@ public class inclass4_1 //create class
 				if(prime_n%i == 0) {
 					return false;
 					}
-				else {
-					return true;
-					}
 				}
 			}
 		return true;
