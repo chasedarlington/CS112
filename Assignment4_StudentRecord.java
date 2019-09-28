@@ -3,7 +3,7 @@ public class Assignment4_StudentRecord {
 	private double quiz1, quiz2, quiz3, midterm, finale, finalPercentage;
 	private String finalGrade;
 
-	public void Assignment4_StudentRecord() {
+	public Assignment4_StudentRecord() {
 		quiz1=0; quiz2=0; quiz3=0; midterm=0; finale=0;
 	}
 

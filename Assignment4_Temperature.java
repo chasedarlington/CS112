@@ -5,22 +5,22 @@ public class Assignment4_Temperature {
 	private float temp;
 	private char scale;
 
-	public void Assignment4_Temperature() { //constructor 
+	public Assignment4_Temperature() { //constructor 
 		temp = 0;
 		scale = 'C';
 	}
 
-	public void Assignment4_Temperature(float t) { //overloading
+	public Assignment4_Temperature(float t) { //overloading
 		temp = t;
 		scale = 'C';
 	}
 
-	public void Assignment4_Temperature(char sc) { //overloading
+	public Assignment4_Temperature(char sc) { //overloading
 		temp = 0;
 		scale = sc;
 	}
 
-	public void Assignment4_Temperature(float t, char sc) { //overloading
+	public Assignment4_Temperature(float t, char sc) { //overloading
 		temp = t;
 		scale = sc;
 	}

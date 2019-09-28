@@ -2,7 +2,7 @@ public class Assignment4_Odometer {
 	
 	private float mpg, odometer, fuel_used, trip, trip_fuel;
 
-	public void Assignment4_Odometer() {
+	public Assignment4_Odometer() {
 		mpg = 0;
 		odometer = 0;
 		fuel_used = 0;
