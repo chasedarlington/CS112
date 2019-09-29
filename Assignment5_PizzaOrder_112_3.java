@@ -42,28 +42,28 @@ public class Assignment5_PizzaOrder_112_3 {
 	public int getNumPizzas() {
 		return numPizzas;
 	}
-/*
-	public String getPizza1() {
-		if (numPizzas >= 3) {
-			return pizza1.getDescription();
+
+	public double getPizza1() {
+		if (numPizzas >= 1) {
+			return pizza1Cost;
 		}
-		else return null;
+		else return 0;
 	}
 
-	public String getPizza2() {
-		if (numPizzas >= 3) {
-			return pizza2.getDescription();
+	public double getPizza2() {
+		if (numPizzas >= 2) {
+			return pizza2Cost;
 		}
-		else return null;
+		else return 0;
 	}
 
-	public String getPizza3() {
+	public double getPizza3() {
 		if (numPizzas >= 3) {
-			return pizza3.getDescription();
+			return pizza3Cost;
 		}
-		else return null;
+		else return 0;
 	}
-*/
+
 	public double calcTotal() {
 		totalCost = pizza1Cost + pizza2Cost + pizza3Cost;
 		return totalCost;

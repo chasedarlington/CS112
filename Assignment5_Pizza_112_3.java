@@ -73,19 +73,14 @@ public class Assignment5_Pizza_112_3 {
 	}
 
 	public double calcCost() { //cost calculation method
-		switch (size) {
-		case ('S'|'s'):
-			cost = 10 + 2 * (num_cheese + num_pepperoni + num_ham);
-			break;
-		case ('M'|'m'):
+		if (size == 'S' | size == 's')
+			cost = 10 + 2 * (num_cheese + num_pepperoni + num_ham);	
+		else if (size == 'M' | size == 'm')
 			cost = 12 + 2 * (num_cheese + num_pepperoni + num_ham);
-			break;
-		case ('L'|'l'): 
+		else if (size == 'L' | size == 'l')
 			cost = 14 + 2 * (num_cheese + num_pepperoni + num_ham);
-			break;
-		default:
-			cost = 10 + 2 * (num_cheese + num_pepperoni + num_ham);
-		}
+		else 
+			cost = 9999;
 		return cost;
 	}
 
