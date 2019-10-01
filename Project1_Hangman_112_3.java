@@ -1,3 +1,4 @@
+//import necessary libraries
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -5,48 +6,81 @@ import java.util.Random;
 import java.lang.StringBuilder;
 import java.util.Scanner;
 
+
+
+//Project1_Hangman_112_3: a class/program to make & play a game of hangman.
 public class Project1_Hangman_112_3 {
-		private Random rand = new Random();
-		private String answerString, hiddenString;
-		private List<String> list = new ArrayList<String>();
-		private List<Character> guessList = new ArrayList<Character>();
-		private StringBuilder sb1 = new StringBuilder();
-		private int guessIndex, numTries, numBadTries, maxIncorrect;
+		private Random rand = new Random(); //
+		private String answerString, hiddenString; //initialize string variables
+		private List<String> list = new ArrayList<String>(); //initialize possible string list (possible answers)
+		private List<Character> guessList = new ArrayList<Character>(); //intialize guessList array
+		private StringBuilder sb1 = new StringBuilder(); //initialize string builder
+		private int guessIndex, numTries, numBadTries, maxIncorrect; //initialize private integer variables
 		
-		public Project1_Hangman_112_3() {
-			answerString = "NO STRING HAS BEEN SET";
-			hiddenString = "NO STRING HAS BEEN SET";
-			maxIncorrect = 8;
-			list.add("MEAN GIRLS");//Adding object in arraylist    
-      		list.add("FAST AND FURIOUS");
-      		list.add("STAR WARS");
-      		list.add("PULP FICTION");
-      		list.add("INDIANA JONES");
-      		list.add("GOODWILL HUNTING");
-      		list.add("THE HUNGER GAMES");
-      		list.add("SNOW WHITE");
-      		list.add("SLEEPING BEAUTY");
-      		list.add("JAWS");
+/*
+Project1_Hangman_112_3 (constructor): assigns default variables when the class is initialized 
+Parameters: none
+Return type: none
+*/
+		public Project1_Hangman_112_3() { //constructor; assigns default variables
+			answerString = "NO STRING HAS BEEN SET"; //set default answer string
+			hiddenString = "NO STRING HAS BEEN SET";  //set default hidden string
+			maxIncorrect = 8; //set max number of incorrect answers
+			list.add("MEAN GIRLS"); //Adding object in arraylist    
+      		list.add("FAST AND FURIOUS"); //Adding object in arraylist    
+      		list.add("STAR WARS"); //Adding object in arraylist    
+      		list.add("PULP FICTION"); //Adding object in arraylist    
+      		list.add("INDIANA JONES"); //Adding object in arraylist    
+      		list.add("GOODWILL HUNTING"); //Adding object in arraylist    
+      		list.add("THE HUNGER GAMES"); //Adding object in arraylist    
+      		list.add("SNOW WHITE"); //Adding object in arraylist    
+      		list.add("SLEEPING BEAUTY"); //Adding object in arraylist    
+      		list.add("JAWS"); //Adding object in arraylist    
   		}
 
-  		public String getList() {
+/*
+getList: returns the current list of possible answers (possible string list)
+Parameters: none
+Return type: String
+*/
+  		public String getList() { //returns the current list of 
   			return list.toString();
   		}
 
-  		public void setAnswerString(String ans) {
+/*
+setAnswerString: manually sets the answer string
+Parameters: none
+Return type: none
+*/  		
+  		public void setAnswerString(String ans) { //set answer string manually
   			answerString = ans;
   			hiddenString = "";
   		}
 
+/*
+setRandomAnswerString: automatically sets a random answer string
+Parameters: none
+Return type: none
+*/ 
 		public void setRandomAnswerString() {
 			answerString = list.get(rand.nextInt(list.size()));
 			hiddenString="";
 		}
 
+/*
+getAnswerString: retrieves answer string.
+Parameters: none
+Return type: String
+*/ 
 		public String getAnswerString() {
 			return answerString;
 		}
 
+/*
+setHiddenString: iterates through the answer string and hides each alphabetical character with an asterik
+Parameters: none
+Return type: none
+*/ 
 		public void setHiddenString() {
 			for (int i = 0; i < answerString.length(); i++) {
 				char character = answerString.charAt(i);
@@ -60,14 +94,31 @@ public class Project1_Hangman_112_3 {
 			hiddenString = sb1.toString();
 		}
 
+/*
+getHiddenString: retrieves the hidden string
+Parameters: none
+Return type: String
+*/ 
 		public String getHiddenString() {
 			return hiddenString;
 		}
 
+/*
+getGuessList: retrieves the previously guessed characters array list (and converts this to a String)
+Parameters: none
+Return type: String
+*/ 
 		public String getGuessList() {
 			return guessList.toString();
 		}
 
+/*
+testGuess: tests a character for being alphabetical, new (not previously entered), and in the answer string.
+		If it is in the answer string, the characters are revealed in the hidden string and the hidden string is returned. 
+		Otherwise, the character is counted as an incorrect answer and an "incorrect" statement is returned.
+Parameters: none
+Return type: String
+*/ 
 		public String testGuess(char guess) {
 			if (Character.isAlphabetic(guess) == false)
 				return "THIS IS NOT AN ALPHABETICAL CHARACTER.";
@@ -99,27 +150,50 @@ public class Project1_Hangman_112_3 {
 			}	
 		}
 
+/*
+getNumTries: retrieves the number of tries
+Parameters: none
+Return type: int
+*/ 
 		public int getNumTries() {
 			return numTries;
 		}
 
+/*
+getNumBadTries: retrieves the number of bad tries
+Parameters: none
+Return type: int
+*/ 
 		public int getNumBadTries() {
 			return numBadTries;
 		}
 
+/*
+setMaxIncorrect: manually set the maximum number of incorrect answers
+Parameters: int max
+Return type: none
+*/ 
 		public void setMaxIncorrect(int max) {
 			maxIncorrect = max;
 		}
 
+/*
+getMaxIncorrect: retrieve the maximum number of incorrect answers
+Parameters: none 
+Return type: int
+*/ 
 		public int getMaxIncorrect() {
 			return maxIncorrect;
 		}
 
+/*
+main: start and run the hangman game
+Parameters: none 
+Return type: none
+*/ 
 		public static void main(String [] args) {
 			Project1_Hangman_112_3 hangman = new Project1_Hangman_112_3();
 			Scanner input = new Scanner(System.in);
-			//System.out.println(Hangman.getList()); //check list of available phrases
-			//hangman.setAnswerString("TEST"); //manually select phrase
 			hangman.setRandomAnswerString(); //randomly select a phrase
 			hangman.setHiddenString();
 			hangman.getHiddenString();
@@ -146,13 +220,7 @@ public class Project1_Hangman_112_3 {
 					System.out.println("CONGRATULATIONS!!!! YOU WON IN " + hangman.getNumTries() + " TRIES!"); //not counting duplicates
 					System.exit(0);
 				}
-			}
-			
-
-			//System.out.println(hangman.getHiddenString()); //manually check current hidden string
-			//System.out.println(hangman.getGuessList()); check list of guesses
-
-		
+			}		
 		}
 
 }
