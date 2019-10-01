@@ -3,12 +3,14 @@ import java.util.Scanner;
 public class Assignment5_Demo_PizzaOrder_112_3 {
 	public static void main(String [] args) {
 		double total;
+		boolean loop;
 		Scanner input = new Scanner(System.in);
 		Assignment5_Pizza_112_3 pizza1 = new Assignment5_Pizza_112_3();
 		Assignment5_Pizza_112_3 pizza2 = new Assignment5_Pizza_112_3();
 		Assignment5_Pizza_112_3 pizza3 = new Assignment5_Pizza_112_3();
 		Assignment5_PizzaOrder_112_3 order = new Assignment5_PizzaOrder_112_3(); // Code to create an order	
-		boolean loop = false;
+
+		loop = false;
 		do {
 			System.out.println();
 			System.out.print("Input number of pizzas (1, 2, or 3): ");
@@ -67,6 +69,7 @@ public class Assignment5_Demo_PizzaOrder_112_3 {
 			else 
 				loop = false;
 		} while(loop==true);
+	}
 	
 
 /*
