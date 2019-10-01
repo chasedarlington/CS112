@@ -122,6 +122,11 @@ public class Project1_Hangman_112_3 {
 			//hangman.setAnswerString("TEST"); //manually select phrase
 			hangman.setRandomAnswerString(); //randomly select a phrase
 			hangman.setHiddenString();
+			hangman.getHiddenString();
+			System.out.println("This is hangman, a game designed to challenge your thinking and problem-solving skills. "
+				+ "You will be given a hidden phrase, and your mission is to guess the phrase, letter by letter. Input only one letter at a time. "
+				+ "If you make 8 incorrect guesses, you lose. If you correctly guess each letter, you win.");
+
 			for (int i = 1; i <= 26; i++) { //26 letters in alphabet; technically duplicate inputs and invalid inputs will count as iterations of i, but 26 should be sufficient
 				System.out.print("Input guess " + i + ": ");
 				System.out.println(hangman.testGuess(input.next().toUpperCase().charAt(0)));
@@ -129,12 +134,14 @@ public class Project1_Hangman_112_3 {
 					System.out.println("NUMBER OF INCORRECT ATTEMPTS EXCEEDED. GAME OVER.");
 					System.exit(0);
 				}
+				
 				else if (hangman.getHiddenString().contains("*")) {
 					System.out.print("Guess again (true or false)? ");
 					if (input.nextBoolean()==false) {
 						System.exit(0);
 					}
 				}
+			
 				else {
 					System.out.println("CONGRATULATIONS!!!! YOU WON IN " + hangman.getNumTries() + " TRIES!"); //not counting duplicates
 					System.exit(0);
