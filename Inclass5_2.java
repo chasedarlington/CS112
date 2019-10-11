@@ -2,18 +2,18 @@ import java.util.Arrays;
 
 public class Inclass5_2 {
 	
-	private Date newDate; //initialize variable of type Date
+	private Inclass5_2_Date newDate; //initialize variable of type Date
 	private String newUserName; //initialize variable of type String
 	private String newString; //initialize variable of type String
 
 	public Inclass5_2() { //Inclass5_2 (BlogEntry) constructor
-		newDate = new Date();	//invoke Date class constructor, allocates memory for the instance variables of Date class
+		newDate = new Inclass5_2_Date();	//invoke Date class constructor, allocates memory for the instance variables of Date class
 		newUserName = ""; //default constructor value
 		newString = ""; //default constructor value
 	}
 
 	public Inclass5_2(String username, String m, int d, int y, String text){ //constructor overloading to accept inputs
-		newDate = new Date();	//invoke Date class constructor, allocates memory for the instance variables of Date class
+		newDate = new Inclass5_2_Date();	//invoke Date class constructor, allocates memory for the instance variables of Date class
 		newUserName = username; //assign input to variable value
 		newDate.set_date(m,d,y); //implement set_date method to assign value to Date
 		newString = text; //assign input to variable value
@@ -35,7 +35,7 @@ public class Inclass5_2 {
 		return newUserName;
 	}
 
-	public Date get_date() { //accessor method for date (private object)
+	public Inclass5_2_Date get_date() { //accessor method for date (private object)
 		return newDate; //return newDate object (note: newDate is a variable that points to the Date object (memory space allocated for Date class))
 	}
 

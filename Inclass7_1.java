@@ -4,7 +4,7 @@ Write a program that accepts 10 numbers into an array and then finds and display
 Write a program that accepts 10 numbers into an array. Take the input of two  numbers Original and Replacement. The program then replaces all occurrences of a  Original by Replacement  in the array . Display the original and the new array.
 */
 
-//import tools
+//import tools/libraries
 import java.util.Scanner; 
 import java.util.Arrays; 
 import java.util.Collections; 
