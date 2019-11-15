@@ -1,86 +1,113 @@
-import java.util.Scanner;
+/*
+By: Alvin Tran and Chase Darlington
+*/
+
+import java.util.*;
 
 public class Project2_Sudoku_demo {
-	public static void main(String [] args) {
-		Scanner input = new Scanner(System.in);
-		System.out.println("\n" + "WELCOME TO ALVIN AND CHASE'S SUDOKU GAME!!!");
-		//System.out.println("3 - Very Easy\n6 - Easy\n9 - Medium\n12 - Hard\n15 - Very Hard");
-		//System.out.print("Select your difficulty: ");
-		//int size = input.nextInt();
-		int size = 9;
-		Project2_Sudoku puzzle = new Project2_Sudoku(size);
-		// puzzle.addInitial(1,1,1);
-		// puzzle.addInitial(1,2,2);
-		// puzzle.addInitial(1,3,3);
-		// puzzle.addInitial(2,1,4);
-		// puzzle.addInitial(2,2,5);
-		// puzzle.addInitial(2,3,9);
-		// puzzle.addInitial(3,1,6);
-		// puzzle.addInitial(3,2,7);
-		puzzle.initV3(); //adding initial values
-    
-    System.out.print(puzzle.toString());
-    int row, column, value, hintRow, hintColumn;
-    boolean cont=true;
-    while(cont==true) {
-      System.out.println();
-      System.out.println("1. Make a guess");
-      System.out.println("2. Display solution");
-      System.out.println("3. Get a hint");
-      System.out.println("4. Check your solution");
-      System.out.println("5. Quit");      
-      System.out.print("Select an option: ");
-      switch(input.nextInt()) {
-        case 1:
-			System.out.print("Row: ");   
-			row = input.nextInt();
-        	System.out.print("Column: ");      
-        	column = input.nextInt();
-        	System.out.print("Value: ");
-        	value = input.nextInt();
-	        puzzle.addGuess(row, column, value);        
-	        System.out.println(puzzle);       
-	        break;
-	    case 2:
-	    	System.out.println(puzzle);
-	    	break;
-        
-        case 3:
-        	System.out.print("Select hint cell row: ");
-        	hintRow = input.nextInt()-1;
-        	System.out.print("Select hint cell column: ");
-        	hintColumn = input.nextInt()-1;
-	        boolean valid[]=puzzle.getAllowedValues(hintRow, hintColumn);
+  public static void main(String[] args) {
+    Scanner input=new Scanner(System.in); 
 
-	        System.out.print("Allowed values are: ");
-	        for(int i=0; i<9; i++)
-	        	if(valid[i])
-	        		System.out.print((i+1)+" ");
-	        System.out.println();
-		    break;
-	    case 4: 
-	    	if (puzzle.checkPuzzle()==true) {
-	    		System.out.println("Congratulations, you have completed the puzzle!");
-	    		cont = false;
-	    		break;
-	    	}
-	    	else {
-	    		System.out.println("There is an error in the puzzle");
-	    		break;
-	    	}
-	    case 5:        
-        	cont = false; 
-        	break;
-      } 
-    } //while loop ends if cont is false (i.e. case 4) */
-//     if puzzle.checkPuzzle()
-//     	System.out.println("Congratulations, you have completed the puzzle!");
-//     else 
-//     	System.out.println
-// ///    if((!puzzle.isFull()) || !(puzzle.checkPuzzle()))
-//       System.out.println("You have made an error in the puzzle.");
-//     else if((puzzle.isFull()) && (puzzle.checkPuzzle()))
-//       System.out.println("Congratulations, you have completed the puzzle.");
+    Project2_Sudoku puzzle=new Project2_Sudoku();//Creation of Project2_Sudoku object
+    System.out.println("What kind of puzzle do you want?");     
+    System.out.print("1 for Test/ 2 for Real: ");  
+    int puzzleType=input.nextInt();//Allows User to choose what sort of puzzle to play    
+    System.out.println(" ");
+
+    switch(puzzleType) {
+      case 1:
+      puzzle.initializeTestPuzzle(puzzle);//Initializes TestPuzzle
+      break;
+
+      case 2:
+      puzzle.initializeRealPuzzle(puzzle);//Initializes more RealPuzzle
+      break;
+    } 
+   
+    System.out.println("Sudoku Game: ");
+    System.out.print("The puzzle is: \n"+puzzle);
+    System.out.println(" ");
+    boolean done=false;
+
+//While loop runs while done is false
+    while(done!=true) {
+      System.out.println(" ");
+      System.out.println("What would you like to do?");
+      System.out.println("1. Clear puzzle.");
+      System.out.println("2. Set a square.");
+      System.out.println("3. Get possible values.");
+      System.out.println("4. Display puzzle.");      
+      System.out.println("5. Display a square.");
+      System.out.println("6. Quit.");      
+      System.out.println(" ");
+
+      int menu=input.nextInt();
+           
+      switch(menu) {
+        case 1:
+          puzzle.reset();//Calling reset
+          System.out.println("Reset!");        
+          System.out.println(" ");
+          System.out.print("The puzzle is now: \n"+puzzle);       
+          break;
+        case 2:       
+          System.out.println(" ");      
+          System.out.println("Which row (1-9) and column (1-9) do you want to change?");
+          int row=input.nextInt()-1;//-1 accounts for array starting at 0
+          int col=input.nextInt()-1;//-1 accounts for array starting at 0
+          System.out.println(" ");
+          System.out.println("What should the value (1-9) be?");
+          int value=input.nextInt();
+          puzzle.addGuess(row, col, value);//Calling addGuess        
+          System.out.println(" ");
+          System.out.print("The puzzle is now: \n"+puzzle);       
+          break;
+        case 3:        
+          System.out.println(" ");     
+          System.out.println("Which row (1-9) and column (1-9) do you want to get values for?");
+          int rowCheck=input.nextInt()-1;//-1 accounts for array starting at 0
+          int colCheck=input.nextInt()-1;//-1 accounts for array starting at 0    
+          System.out.println(" ");
+
+          boolean valid[]=puzzle.getAllowedValues(rowCheck, colCheck);
+          System.out.print("Allowed values are: ");
+          for(int i=0; i<9; i++)//Allowed values are added to array and printed out depending on whether boolean is true or false
+            if(valid[i])
+              System.out.print((i+1)+" ");
+            System.out.println();
+          break;
+        case 4:      
+          System.out.println(" ");
+          System.out.print("The puzzle is now: \n"+puzzle);//Displaying puzzle       
+          System.out.println(" ");
+          break;
+        case 5:        
+          System.out.println(" ");     
+          System.out.println("Which row (1-9) and column (1-9) do you want to get the value of?");
+          int rowValueCheck=input.nextInt()-1;//-1 accounts for array starting at 0
+          int colValueCheck=input.nextInt()-1;//-1 accounts for array starting at 0    
+          System.out.println(" ");
+          System.out.println("Value of Row: "+(rowValueCheck+1)
+            + " Column: "+(colValueCheck+1)+" is: "
+            + puzzle.getValueIn(rowValueCheck, colValueCheck));//Calling getValueIn
+          break;
+        case 6:        
+          System.out.println(" ");     
+          System.out.println("Thanks for playing.");
+          done=true;//done is true to exit while loop
+      }
+    }
+    System.out.println(" ");
+    System.out.print("The puzzle is now: \n" + puzzle);     
+    System.out.println(" ");
+    if((puzzle.isFull()) && (puzzle.checkPuzzle()))//Executes if both return true
+      System.out.println("Congratulations, you have completed the puzzle.");    
+    else if((!puzzle.checkPuzzle()) || (!puzzle.isFull()))//Executes if either return false
+      System.out.println("You have made an error in the puzzle.");
   }
 }
  
+
+
+
+
